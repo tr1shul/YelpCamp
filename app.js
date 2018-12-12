@@ -6,9 +6,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
 var campgrounds = [
-  {name: "Salmon Creek", image: "https://picsum.photos/200/300/?random"},
-  {name: "Granite Hill", image: "https://picsum.photos/200/300/?random"},
-  {name: "Mountain Goat's Rest", image: "https://picsum.photos/200/300/?random"}
+  {name: "Salmon Creek", image: "https://source.unsplash.com/random"},
+  {name: "Granite Hill", image: "https://source.unsplash.com/random"},
+  {name: "Mountain Goat's Rest", image: "https://source.unsplash.com/random"}
 ];
 
 app.get("/", function(req, res)
