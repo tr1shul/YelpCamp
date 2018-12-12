@@ -16,7 +16,7 @@ app.get("/campgrounds", function(req, res)
     {name: "Mountain Goat's Rest", image: "https://www.pexels.com/photo/photo-of-blue-and-yellow-lighted-dome-tent-surrounded-by-plants-during-night-time-712067/"}
   ];
 
-  res.render("campgrounds");
+  res.render("campgrounds", {campgrounds: campgrounds});
 });
 
 app.listen(8080, 'localhost', function()
