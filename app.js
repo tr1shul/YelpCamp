@@ -5,6 +5,12 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
+var campgrounds = [
+  {name: "Salmon Creek", image: "https://picsum.photos/200/300/?random"},
+  {name: "Granite Hill", image: "https://picsum.photos/200/300/?random"},
+  {name: "Mountain Goat's Rest", image: "https://picsum.photos/200/300/?random"}
+];
+
 app.get("/", function(req, res)
 {
   res.render("landing");
@@ -12,18 +18,21 @@ app.get("/", function(req, res)
 
 app.get("/campgrounds", function(req, res)
 {
-  var campgrounds = [
-    {name: "Salmon Creek", image: "https://www.pexels.com/photo/six-camping-tents-in-forest-699558/"},
-    {name: "Granite Hill", image: "https://www.pexels.com/photo/adventure-alps-camp-camping-618848/"},
-    {name: "Mountain Goat's Rest", image: "https://www.pexels.com/photo/photo-of-blue-and-yellow-lighted-dome-tent-surrounded-by-plants-during-night-time-712067/"}
-  ];
-
   res.render("campgrounds", {campgrounds: campgrounds});
 });
 
 app.post("/campgrounds", function(req, res)
 {
-  res.send("You hit the POST route");
+  var name = req.body.name;
+  var image = req.body.image;
+  var newCampround = {name: name, image: image};
+  campgrounds.push(newCampround);
+  res.redirect("/campgrounds");
+});
+
+app.get("/campgrounds/new", function(req, res)
+{
+  res.render("new");
 });
 
 app.listen(8080, 'localhost', function()
